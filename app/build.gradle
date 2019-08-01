@@ -39,4 +39,5 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.idonans_systeminsets
     implementation rootProject.ext.bcfg.deps.idonans_backstack
     implementation rootProject.ext.bcfg.deps.idonans_lang
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
 }

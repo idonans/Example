@@ -72,6 +72,7 @@ def addRepos(RepositoryHandler handler) {
     handler.maven { url 'https://dl.google.com/dl/android/maven2/' }
     handler.maven { url 'https://dl.bintray.com/idonans/maven/' }
     handler.maven { url 'https://dl.bintray.com/thelasterstar/maven/' }
+    handler.maven { url 'https://jitpack.io' }
 }
 
 def createGitVersionCode() {
