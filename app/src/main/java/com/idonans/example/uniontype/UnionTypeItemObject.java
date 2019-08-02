@@ -10,4 +10,8 @@ public class UnionTypeItemObject<T> {
         this.itemObject = itemObject;
     }
 
+    public static <T> UnionTypeItemObject<T> valueOf(int unionType, T itemObject) {
+        return new UnionTypeItemObject(unionType, itemObject);
+    }
+
 }

@@ -19,6 +19,7 @@ public interface Host {
     @Nullable
     Fragment getFragment();
 
+    @NonNull
     LayoutInflater getLayoutInflater();
 
     @NonNull
