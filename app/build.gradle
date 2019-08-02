@@ -40,4 +40,6 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.idonans_backstack
     implementation rootProject.ext.bcfg.deps.idonans_lang
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-15'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-15'
 }

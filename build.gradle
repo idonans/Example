@@ -8,9 +8,6 @@ buildscript {
         classpath rootProject.ext.bcfg.deps.butterknife_gradle_plugin
         classpath rootProject.ext.bcfg.deps.kotlin_gradle_plugin
     }
-    repositories {
-        google()
-    }
 }
 
 allprojects {
