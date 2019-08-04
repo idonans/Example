@@ -5,8 +5,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.idonans.example.R;
-import com.idonans.example.uniontype.Host;
-import com.idonans.example.uniontype.UnionTypeViewHolder;
+import com.idonans.uniontype.Host;
+import com.idonans.uniontype.UnionTypeViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

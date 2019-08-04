@@ -3,9 +3,9 @@ package com.idonans.example.module.uniontype.impl;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.idonans.example.uniontype.Host;
-import com.idonans.example.uniontype.UnionTypeMapper;
-import com.idonans.example.uniontype.UnionTypeViewHolder;
+import com.idonans.uniontype.Host;
+import com.idonans.uniontype.UnionTypeMapper;
+import com.idonans.uniontype.UnionTypeViewHolder;
 
 public class UnionType implements UnionTypeMapper {
 

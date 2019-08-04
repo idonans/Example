@@ -36,12 +36,14 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.rxjava2
     implementation rootProject.ext.bcfg.deps.rx_android
     implementation rootProject.ext.bcfg.deps.rxbinding2
-    implementation rootProject.ext.bcfg.deps.idonans_appcontext
-    implementation rootProject.ext.bcfg.deps.idonans_systeminsets
-    implementation rootProject.ext.bcfg.deps.idonans_backstack
-    implementation rootProject.ext.bcfg.deps.idonans_lang
     implementation rootProject.ext.bcfg.deps.butterknife
     annotationProcessor rootProject.ext.bcfg.deps.butterknife_processor
+    implementation rootProject.ext.bcfg.deps.idonans_appcontext
+    implementation rootProject.ext.bcfg.deps.idonans_lang
+    implementation rootProject.ext.bcfg.deps.idonans_systeminsets
+    implementation rootProject.ext.bcfg.deps.idonans_backstack
+    implementation rootProject.ext.bcfg.deps.idonans_uniontype
+    implementation rootProject.ext.bcfg.deps.idonans_dynamic
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-15'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-15'
