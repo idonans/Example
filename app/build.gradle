@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.bcfg.ver.target_sdk
@@ -39,6 +40,8 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.idonans_systeminsets
     implementation rootProject.ext.bcfg.deps.idonans_backstack
     implementation rootProject.ext.bcfg.deps.idonans_lang
+    implementation rootProject.ext.bcfg.deps.butterknife
+    annotationProcessor rootProject.ext.bcfg.deps.butterknife_processor
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-15'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-15'

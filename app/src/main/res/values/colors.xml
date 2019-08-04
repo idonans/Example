@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="c_grey">#FF909090</color>
+    <color name="c_grey_light">#FF999999</color>
+    <color name="c_grey_dark">#FF666666</color>
+    <color name="c_black">#FF282828</color>
+    <color name="c_white">#FFf1f1f1</color>
+    <color name="c_divider">@color/c_white</color>
+</resources>

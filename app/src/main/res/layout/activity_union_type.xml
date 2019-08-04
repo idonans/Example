@@ -27,50 +27,18 @@
             android:textColor="@color/c_black" />
     </com.idonans.systeminsets.SystemInsetsFrameLayout>
 
-    <ScrollView
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@android:color/white">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@drawable/example_divider_line"
-            android:orientation="vertical"
-            android:showDividers="middle">
-
-            <FrameLayout
-                android:id="@+id/item_union_type"
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <TextView
-                    style="@style/ExampleTheme.Text.Single.EllEnd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="UnionType"
-                    android:textColor="@color/c_black" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/item_more"
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <TextView
-                    style="@style/ExampleTheme.Text.Single.EllEnd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="More"
-                    android:textColor="@color/c_black" />
-            </FrameLayout>
-        </LinearLayout>
-    </ScrollView>
+            android:layout_height="match_parent" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <com.idonans.systeminsets.SystemInsetsFrameLayout
         android:id="@+id/bottom_bar"

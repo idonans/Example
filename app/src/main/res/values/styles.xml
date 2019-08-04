@@ -1,14 +1,21 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="ExampleTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
-    <style name="AppTheme.Splash">
+    <style name="ExampleTheme.Splash">
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="AppTheme.Text.Single" parent="@style/TextAppearance.AppCompat">
+    <style name="ExampleTheme.Text" parent="@style/TextAppearance.AppCompat">
         <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="ExampleTheme.Text.Single">
         <item name="android:singleLine">true</item>
         <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="ExampleTheme.Text.Single.EllEnd">
+        <item name="android:ellipsize">end</item>
     </style>
 </resources>

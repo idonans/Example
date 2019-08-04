@@ -6,11 +6,11 @@
     android:background="#ff33b5e5">
 
     <TextView
-        style="@style/AppTheme.Text.Single"
+        style="@style/ExampleTheme.Text.Single.EllEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Example"
-        android:textColor="#ff282828"
+        android:textColor="@color/c_black"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="@style/AppTheme.Text.Single"
+        style="@style/ExampleTheme.Text.Single.EllEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="Powered by idonans"
-        android:textColor="#ff282828"
+        android:textColor="@color/c_black"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
