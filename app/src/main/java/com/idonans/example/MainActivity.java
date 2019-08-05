@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.idonans.example.module.uniontype.UnionTypeActivity;
 import com.idonans.lang.util.ViewUtil;
 
 import butterknife.BindView;
@@ -30,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        ViewUtil.onClick(mItemUnionType, v -> {
-            // TODO
-        });
+        ViewUtil.onClick(mItemUnionType, v -> UnionTypeActivity.start(this));
         ViewUtil.onClick(mItemMore, v -> {
             // TODO
         });

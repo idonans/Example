@@ -34,10 +34,46 @@
         android:layout_weight="1"
         android:background="@android:color/white">
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFF0000"
+            android:minHeight="100dp">
+
+            <TextView
+                android:id="@+id/init_loading"
+                style="@style/ExampleTheme.Text.Single.EllEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="loading"
+                android:textColor="@android:color/white" />
+        </FrameLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFF0000"
+            android:minHeight="100dp">
+
+            <TextView
+                android:id="@+id/more_loading"
+                style="@style/ExampleTheme.Text.Single.EllEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="loading more"
+                android:textColor="@android:color/white" />
+        </FrameLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <com.idonans.systeminsets.SystemInsetsFrameLayout
