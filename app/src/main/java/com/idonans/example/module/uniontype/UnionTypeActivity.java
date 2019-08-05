@@ -13,6 +13,7 @@ import com.idonans.dynamic.page.PagePresenter;
 import com.idonans.dynamic.page.PageView;
 import com.idonans.example.R;
 import com.idonans.example.module.uniontype.impl.UnionType;
+import com.idonans.lang.thread.Threads;
 import com.idonans.uniontype.Host;
 import com.idonans.uniontype.UnionTypeAdapter;
 import com.idonans.uniontype.UnionTypeItemObject;
@@ -101,6 +102,8 @@ public class UnionTypeActivity extends AppCompatActivity {
             }
 
             mUnionTypeAdapter.setOnLoadPrePageListener(() -> {
+                Threads.mustUi();
+                Timber.v("setOnLoadPrePageListener callback");
                 if (mPresenter == null) {
                     Timber.e("presenter is null");
                     return;
@@ -111,6 +114,8 @@ public class UnionTypeActivity extends AppCompatActivity {
                 }
             });
             mUnionTypeAdapter.setOnLoadNextPageListener(() -> {
+                Threads.mustUi();
+                Timber.v("setOnLoadNextPageListener callback");
                 if (mPresenter == null) {
                     Timber.e("presenter is null");
                     return;
