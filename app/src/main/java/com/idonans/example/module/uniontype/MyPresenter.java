@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 
 import com.idonans.dynamic.page.PageView;
 import com.idonans.dynamic.page.StatusPagePresenter;
+import com.idonans.dynamic.page.uniontype.UnionTypeStatusPageView;
 import com.idonans.example.module.uniontype.impl.UnionType;
 import com.idonans.lang.thread.Threads;
 import com.idonans.uniontype.UnionTypeItemObject;
@@ -15,19 +16,22 @@ import java.util.List;
 
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
+import timber.log.Timber;
 
-public class UnionTypePresenter extends StatusPagePresenter<UnionTypeItemObject, UnionTypeActivity.UnionTypePageView> {
+public class MyPresenter extends StatusPagePresenter<UnionTypeItemObject, UnionTypeStatusPageView> {
 
     private int mPrePageNo;
     private int mNextPageNo;
 
-    public UnionTypePresenter(UnionTypeActivity.UnionTypePageView view) {
+    public MyPresenter(UnionTypeActivity.UnionTypePageView view) {
         super(view, true, true);
     }
 
     @Nullable
     @Override
     protected SingleSource<Collection<UnionTypeItemObject>> createInitRequest() throws Exception {
+        Timber.v("createInitRequest [%s, %s]", mPrePageNo, mNextPageNo);
+
         return Single.fromCallable(() -> {
             Threads.sleepQuietly(2000L);
             List<UnionTypeItemObject> items = new ArrayList<>();
@@ -40,6 +44,8 @@ public class UnionTypePresenter extends StatusPagePresenter<UnionTypeItemObject,
 
     @Override
     protected void onInitRequestResult(@NonNull PageView<UnionTypeItemObject> view, @NonNull Collection<UnionTypeItemObject> items) {
+        Timber.v("onInitRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
+
         mPrePageNo = 0;
         mNextPageNo = 0;
         super.onInitRequestResult(view, items);
@@ -48,6 +54,8 @@ public class UnionTypePresenter extends StatusPagePresenter<UnionTypeItemObject,
     @Nullable
     @Override
     protected SingleSource<Collection<UnionTypeItemObject>> createPrePageRequest() throws Exception {
+        Timber.v("createPrePageRequest [%s, %s]", mPrePageNo, mNextPageNo);
+
         return Single.fromCallable(() -> {
             Threads.sleepQuietly(2000L);
             List<UnionTypeItemObject> items = new ArrayList<>();
@@ -60,6 +68,8 @@ public class UnionTypePresenter extends StatusPagePresenter<UnionTypeItemObject,
 
     @Override
     protected void onPrePageRequestResult(@NonNull PageView<UnionTypeItemObject> view, @NonNull Collection<UnionTypeItemObject> items) {
+        Timber.v("onPrePageRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
+
         mPrePageNo--;
         super.onPrePageRequestResult(view, items);
     }
@@ -67,6 +77,8 @@ public class UnionTypePresenter extends StatusPagePresenter<UnionTypeItemObject,
     @Nullable
     @Override
     protected SingleSource<Collection<UnionTypeItemObject>> createNextPageRequest() throws Exception {
+        Timber.v("createNextPageRequest [%s, %s]", mPrePageNo, mNextPageNo);
+
         return Single.fromCallable(() -> {
             Threads.sleepQuietly(2000L);
             List<UnionTypeItemObject> items = new ArrayList<>();
@@ -79,6 +91,8 @@ public class UnionTypePresenter extends StatusPagePresenter<UnionTypeItemObject,
 
     @Override
     protected void onNextPageRequestResult(@NonNull PageView<UnionTypeItemObject> view, @NonNull Collection<UnionTypeItemObject> items) {
+        Timber.v("onNextPageRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
+
         mNextPageNo++;
         super.onNextPageRequestResult(view, items);
     }
