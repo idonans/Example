@@ -11,7 +11,9 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        RxJavaPlugins.setErrorHandler(throwable -> {
+        RxJavaPlugins.setErrorHandler(e -> {
+            e.printStackTrace();
+            Timber.e(e, "RxJavaPlugins.setErrorHandler");
         });
         Timber.plant(new Timber.DebugTree());
     }

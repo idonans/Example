@@ -13,7 +13,7 @@ import com.idonans.dynamic.page.PagePresenter;
 import com.idonans.dynamic.page.PageView;
 import com.idonans.example.R;
 import com.idonans.example.module.uniontype.impl.UnionType;
-import com.idonans.lang.thread.Threads;
+import com.idonans.uniontype.GroupArrayList;
 import com.idonans.uniontype.Host;
 import com.idonans.uniontype.UnionTypeAdapter;
 import com.idonans.uniontype.UnionTypeItemObject;
@@ -62,6 +62,8 @@ public class UnionTypeActivity extends AppCompatActivity {
 
     public class UnionTypePageView implements PageView<UnionTypeItemObject> {
 
+        private static final int GROUP_DEFAULT = 1;
+
         private final UnionTypeAdapter mUnionTypeAdapter;
         private PagePresenter<UnionTypeItemObject, UnionTypePageView> mPresenter;
         private PageRequestCondition mPrePageRequestCondition;
@@ -102,7 +104,6 @@ public class UnionTypeActivity extends AppCompatActivity {
             }
 
             mUnionTypeAdapter.setOnLoadPrePageListener(() -> {
-                Threads.mustUi();
                 Timber.v("setOnLoadPrePageListener callback");
                 if (mPresenter == null) {
                     Timber.e("presenter is null");
@@ -114,7 +115,6 @@ public class UnionTypeActivity extends AppCompatActivity {
                 }
             });
             mUnionTypeAdapter.setOnLoadNextPageListener(() -> {
-                Threads.mustUi();
                 Timber.v("setOnLoadNextPageListener callback");
                 if (mPresenter == null) {
                     Timber.e("presenter is null");
@@ -163,7 +163,9 @@ public class UnionTypeActivity extends AppCompatActivity {
 
         @Override
         public void onInitDataLoad(Collection<UnionTypeItemObject> items) {
-            mUnionTypeAdapter.setData(items);
+            GroupArrayList data = new GroupArrayList();
+            data.setGroupItems(GROUP_DEFAULT, items);
+            mUnionTypeAdapter.setData(data);
         }
 
         @Override
@@ -173,7 +175,7 @@ public class UnionTypeActivity extends AppCompatActivity {
 
         @Override
         public void onPrePageDataLoad(Collection<UnionTypeItemObject> items) {
-            mUnionTypeAdapter.insertFirstData(items);
+            mUnionTypeAdapter.insertGroupItems(GROUP_DEFAULT, 0, items);
         }
 
         @Override
@@ -183,7 +185,7 @@ public class UnionTypeActivity extends AppCompatActivity {
 
         @Override
         public void onNextPageDataLoad(Collection<UnionTypeItemObject> items) {
-            mUnionTypeAdapter.insertLastData(items);
+            mUnionTypeAdapter.appendGroupItems(GROUP_DEFAULT, items);
         }
 
         @Override
