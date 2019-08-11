@@ -3,8 +3,8 @@ package com.idonans.example.module.uniontype;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.idonans.dynamic.page.PagePresenter;
 import com.idonans.dynamic.page.PageView;
+import com.idonans.dynamic.page.StatusPagePresenter;
 import com.idonans.example.module.uniontype.impl.UnionType;
 import com.idonans.lang.thread.Threads;
 import com.idonans.uniontype.UnionTypeItemObject;
@@ -16,13 +16,13 @@ import java.util.List;
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
 
-public class UnionTypePresenter extends PagePresenter<UnionTypeItemObject, UnionTypeActivity.UnionTypePageView> {
+public class UnionTypePresenter extends StatusPagePresenter<UnionTypeItemObject, UnionTypeActivity.UnionTypePageView> {
 
     private int mPrePageNo;
     private int mNextPageNo;
 
     public UnionTypePresenter(UnionTypeActivity.UnionTypePageView view) {
-        super(view);
+        super(view, true, true);
     }
 
     @Nullable

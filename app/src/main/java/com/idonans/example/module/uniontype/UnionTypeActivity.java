@@ -54,7 +54,7 @@ public class UnionTypeActivity extends AppCompatActivity {
         adapter.setUnionTypeMapper(new UnionType());
         mRecyclerView.setAdapter(adapter);
 
-        mUnionTypePageView = new UnionTypePageView(adapter, true, true);
+        mUnionTypePageView = new UnionTypePageView(adapter);
         mUnionTypePresenter = new UnionTypePresenter(mUnionTypePageView);
         mUnionTypePageView.setPresenter(mUnionTypePresenter);
         mUnionTypePresenter.requestInit();
@@ -66,53 +66,16 @@ public class UnionTypeActivity extends AppCompatActivity {
 
         private final UnionTypeAdapter mUnionTypeAdapter;
         private PagePresenter<UnionTypeItemObject, UnionTypePageView> mPresenter;
-        private PageRequestCondition mPrePageRequestCondition;
-        private PageRequestCondition mNextPageRequestCondition;
 
-        private class PageRequestCondition {
-            boolean loading;
-            boolean end;
-            boolean error;
-
-            public PageRequestCondition setLoading(boolean loading) {
-                this.loading = loading;
-                return this;
-            }
-
-            public PageRequestCondition setEnd(boolean end) {
-                this.end = end;
-                return this;
-            }
-
-            public PageRequestCondition setError(boolean error) {
-                this.error = error;
-                return this;
-            }
-
-            boolean canStartNewRequest() {
-                return !loading && !end && !error;
-            }
-        }
-
-        public UnionTypePageView(UnionTypeAdapter unionTypeAdapter, boolean enablePrePage, boolean enableNextPage) {
+        public UnionTypePageView(UnionTypeAdapter unionTypeAdapter) {
             mUnionTypeAdapter = unionTypeAdapter;
-            if (enablePrePage) {
-                mPrePageRequestCondition = new PageRequestCondition();
-            }
-            if (enableNextPage) {
-                mNextPageRequestCondition = new PageRequestCondition();
-            }
-
             mUnionTypeAdapter.setOnLoadPrePageListener(() -> {
                 Timber.v("setOnLoadPrePageListener callback");
                 if (mPresenter == null) {
                     Timber.e("presenter is null");
                     return;
                 }
-                if (mPrePageRequestCondition != null && mPrePageRequestCondition.canStartNewRequest()) {
-                    mPrePageRequestCondition.setLoading(true);
-                    mPresenter.requestPrePage();
-                }
+                mPresenter.requestPrePage();
             });
             mUnionTypeAdapter.setOnLoadNextPageListener(() -> {
                 Timber.v("setOnLoadNextPageListener callback");
@@ -120,10 +83,7 @@ public class UnionTypeActivity extends AppCompatActivity {
                     Timber.e("presenter is null");
                     return;
                 }
-                if (mNextPageRequestCondition != null && mNextPageRequestCondition.canStartNewRequest()) {
-                    mNextPageRequestCondition.setLoading(true);
-                    mPresenter.requestNextPage();
-                }
+                mPresenter.requestNextPage();
             });
         }
 
