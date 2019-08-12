@@ -44,6 +44,9 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.idonans_backstack
     implementation rootProject.ext.bcfg.deps.idonans_uniontype
     implementation rootProject.ext.bcfg.deps.idonans_dynamic
+    implementation rootProject.ext.bcfg.deps.retrofit
+    implementation rootProject.ext.bcfg.deps.retrofit_gson
+    implementation rootProject.ext.bcfg.deps.retrofit_rxjava2
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-15'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-15'
