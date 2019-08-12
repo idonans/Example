@@ -25,14 +25,11 @@ public class LifecycleFragment extends RealLifecycleFragment {
 
     private LifecycleObserverImpl mLifecycleObserverImpl = new LifecycleObserverImpl();
 
-    {
-        getLifecycle().addObserver(mLifecycleObserverImpl);
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
+        getLifecycle().addObserver(mLifecycleObserverImpl);
     }
 
     @Nullable
