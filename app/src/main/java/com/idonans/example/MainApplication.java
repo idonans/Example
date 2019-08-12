@@ -2,6 +2,8 @@ package com.idonans.example;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import io.reactivex.plugins.RxJavaPlugins;
 import timber.log.Timber;
 
@@ -16,6 +18,8 @@ public class MainApplication extends Application {
             Timber.e(e, "RxJavaPlugins.setErrorHandler");
         });
         Timber.plant(new Timber.DebugTree());
+
+        Fresco.initialize(this);
     }
 
 }

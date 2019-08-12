@@ -92,6 +92,12 @@ public class MyPresenter extends StatusPagePresenter<UnionTypeItemObject, UnionT
         super.onPrePageRequestResult(view, items);
     }
 
+    @Override
+    protected void onPrePageRequestError(@NonNull PageView<UnionTypeItemObject> view, @NonNull Throwable e) {
+        super.onPrePageRequestError(view, e);
+        e.printStackTrace();
+    }
+
     @Nullable
     @Override
     protected SingleSource<Collection<UnionTypeItemObject>> createNextPageRequest() throws Exception {
@@ -119,6 +125,12 @@ public class MyPresenter extends StatusPagePresenter<UnionTypeItemObject, UnionT
 
         mNextPageNo++;
         super.onNextPageRequestResult(view, items);
+    }
+
+    @Override
+    protected void onNextPageRequestError(@NonNull PageView<UnionTypeItemObject> view, @NonNull Throwable e) {
+        super.onNextPageRequestError(view, e);
+        e.printStackTrace();
     }
 
 }
