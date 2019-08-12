@@ -8,16 +8,16 @@ import com.idonans.example.entity.api.GithubUserInfo;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface DefaultApiInterface {
 
-    @GET("https://api.github.com/search/users?q={search}&per_page=10&page={pageNo}")
+    @GET("https://api.github.com/search/users?per_page=10")
     @Headers({
             "Accept: application/vnd.github.v3+json"
     })
     Observable<GithubPage<GithubUserInfo>> searchUserInfo(
-            @Path("search") String search,
-            @IntRange(from = 1) @Path("pageNo") int pageNo);
+            @Query("q") String search,
+            @IntRange(from = 1) @Query("page") int pageNo);
 
 }

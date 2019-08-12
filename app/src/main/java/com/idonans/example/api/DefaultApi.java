@@ -20,11 +20,15 @@ public class DefaultApi {
         }
     };
 
+    public static DefaultApi getInstance() {
+        return sInstance.get();
+    }
+
     private DefaultApiInterface mDefaultApiInterface;
 
     private DefaultApi() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://")
+                .baseUrl("https://github.com")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

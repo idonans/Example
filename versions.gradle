@@ -48,12 +48,11 @@ bcfg.deps.rxjava2 = "io.reactivex.rxjava2:rxjava:2.2.4"
 bcfg.deps.rx_android = "io.reactivex.rxjava2:rxandroid:2.1.0"
 bcfg.deps.rxbinding2 = "com.jakewharton.rxbinding2:rxbinding:2.2.0"
 
-bcfg.deps.fresco = "com.facebook.fresco:fresco:1.11.0"
-bcfg.deps.fresco_anim_gif = "com.facebook.fresco:animated-gif:1.11.0"
-bcfg.deps.fresco_anim_webp = "com.facebook.fresco:animated-webp:1.11.0"
-bcfg.deps.fresco_support_webp = "com.facebook.fresco:webpsupport:1.11.0"
-bcfg.deps.fresco_okhttp3 = "com.facebook.fresco:imagepipeline-okhttp3:1.11.0"
-
+bcfg.deps.fresco = "com.facebook.fresco:fresco:2.0.0"
+bcfg.deps.fresco_anim_gif = "com.facebook.fresco:animated-gif:2.0.0"
+bcfg.deps.fresco_anim_webp = "com.facebook.fresco:animated-webp:2.0.0"
+bcfg.deps.fresco_support_webp = "com.facebook.fresco:webpsupport:2.0.0"
+bcfg.deps.fresco_okhttp3 = "com.facebook.fresco:imagepipeline-okhttp3:2.0.0"
 
 bcfg.deps.idonans_appcontext = "com.idonans.appcontext:appcontext:0.1.4"
 bcfg.deps.idonans_lang = "com.idonans.lang:lang:0.1.4"

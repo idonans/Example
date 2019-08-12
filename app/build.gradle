@@ -47,6 +47,11 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.retrofit
     implementation rootProject.ext.bcfg.deps.retrofit_gson
     implementation rootProject.ext.bcfg.deps.retrofit_rxjava2
+    implementation rootProject.ext.bcfg.deps.fresco
+    implementation rootProject.ext.bcfg.deps.fresco_anim_gif
+    implementation rootProject.ext.bcfg.deps.fresco_anim_webp
+    implementation rootProject.ext.bcfg.deps.fresco_support_webp
+    implementation rootProject.ext.bcfg.deps.fresco_okhttp3
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-15'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-15'
