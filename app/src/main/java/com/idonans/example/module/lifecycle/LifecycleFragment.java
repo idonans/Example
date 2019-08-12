@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,20 +17,25 @@ import timber.log.Timber;
 
 public class LifecycleFragment extends RealLifecycleFragment {
 
-    public static LifecycleFragment newInstance() {
+    public static LifecycleFragment newInstance(String text) {
         Bundle args = new Bundle();
+        args.putString("text", text);
         LifecycleFragment fragment = new LifecycleFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    private LifecycleObserverImpl mLifecycleObserverImpl = new LifecycleObserverImpl();
+    private String mText;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
-        getLifecycle().addObserver(mLifecycleObserverImpl);
+        Bundle arg = getArguments();
+        if (arg != null) {
+            mText = arg.getString("text");
+        }
+        new LifecycleObserverImpl(mText, getLifecycle());
     }
 
     @Nullable
@@ -47,6 +53,9 @@ public class LifecycleFragment extends RealLifecycleFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Timber.v("onViewCreated");
+
+        TextView textView = view.findViewById(R.id.text_1);
+        textView.setText(mText);
     }
 
     @Override
@@ -83,7 +92,6 @@ public class LifecycleFragment extends RealLifecycleFragment {
     public void onDestroy() {
         super.onDestroy();
         Timber.v("onDestroy");
-        getLifecycle().removeObserver(mLifecycleObserverImpl);
     }
 
 }
