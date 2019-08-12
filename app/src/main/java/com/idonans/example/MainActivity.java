@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.idonans.backstack.dialog.ViewDialog;
+import com.idonans.example.module.lifecycle.LifecycleActivity;
 import com.idonans.example.module.uniontype.UnionTypeActivity;
 import com.idonans.lang.util.ViewUtil;
 
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     View mItemUnionType;
     @BindView(R.id.item_view_dialog)
     View mItemViewDialog;
+    @BindView(R.id.item_lifecycle)
+    View mItemLifecycle;
     @BindView(R.id.item_more)
     View mItemMore;
 
@@ -38,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         ViewUtil.onClick(mItemUnionType, v -> UnionTypeActivity.start(this));
-        ViewUtil.onClick(mItemViewDialog, v -> {
-            showSimpleDialog(0);
-        });
+        ViewUtil.onClick(mItemViewDialog, v -> showSimpleDialog(0));
+        ViewUtil.onClick(mItemLifecycle, v -> LifecycleActivity.start(this));
         ViewUtil.onClick(mItemMore, v -> {
             // TODO
         });

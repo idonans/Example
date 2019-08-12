@@ -71,6 +71,21 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/item_lifecycle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    style="@style/ExampleTheme.Text.Single.EllEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="10dp"
+                    android:text="Lifecycle"
+                    android:textColor="@color/c_black" />
+            </FrameLayout>
+
+            <FrameLayout
                 android:id="@+id/item_more"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
