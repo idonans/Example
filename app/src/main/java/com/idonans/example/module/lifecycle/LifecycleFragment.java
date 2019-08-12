@@ -23,6 +23,12 @@ public class LifecycleFragment extends RealLifecycleFragment {
         return fragment;
     }
 
+    private LifecycleObserverImpl mLifecycleObserverImpl = new LifecycleObserverImpl();
+
+    {
+        getLifecycle().addObserver(mLifecycleObserverImpl);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +44,12 @@ public class LifecycleFragment extends RealLifecycleFragment {
         }
 
         return inflater.inflate(R.layout.fragment_lifecycle, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Timber.v("onViewCreated");
     }
 
     @Override
@@ -74,6 +86,7 @@ public class LifecycleFragment extends RealLifecycleFragment {
     public void onDestroy() {
         super.onDestroy();
         Timber.v("onDestroy");
+        getLifecycle().removeObserver(mLifecycleObserverImpl);
     }
 
 }

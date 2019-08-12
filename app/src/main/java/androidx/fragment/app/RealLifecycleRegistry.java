@@ -33,6 +33,10 @@ public class RealLifecycleRegistry extends LifecycleRegistry {
             if (fragment.isResumed() && fragment.getUserVisibleHint() && !fragment.isHidden()) {
                 super.handleLifecycleEvent(event);
             }
+        } else if (event == Event.ON_PAUSE) {
+            if (fragment.isResumed()) {
+                super.handleLifecycleEvent(event);
+            }
         } else {
             super.handleLifecycleEvent(event);
         }

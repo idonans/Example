@@ -30,6 +30,7 @@ public class LifecycleActivity extends AppCompatActivity {
                     .add(R.id.content_container, fragment, FRAGMENT_TAG_LIFECYCLE)
                     .commit();
         }
+        fragment.setUserVisibleHint(false);
     }
 
 }
