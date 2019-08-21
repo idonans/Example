@@ -18,6 +18,7 @@ import com.idonans.example.module.uniontype.impl.UnionType;
 import com.idonans.uniontype.Host;
 import com.idonans.uniontype.UnionTypeAdapter;
 import com.idonans.uniontype.UnionTypeItemObject;
+import com.idonans.uniontype.UnionTypeViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,18 +42,18 @@ public class LifecycleFragment extends RealLifecycleFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Timber.v("onCreate");
         Bundle arg = getArguments();
         if (arg != null) {
             mText = arg.getString("text");
         }
+        Timber.v("onCreate %s", mText);
         new LifecycleObserverImpl(mText, getLifecycle());
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Timber.v("onCreateView");
+        Timber.v("onCreateView %s", mText);
         if (container == null) {
             container = new FrameLayout(inflater.getContext());
         }
@@ -67,13 +68,49 @@ public class LifecycleFragment extends RealLifecycleFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Timber.v("onViewCreated");
+        Timber.v("onViewCreated %s", mText);
 
         ButterKnife.bind(this, view);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        mAdapter = new UnionTypeAdapter();
+        mAdapter = new UnionTypeAdapter() {
+            @Override
+            public boolean onFailedToRecycleView(@NonNull UnionTypeViewHolder holder) {
+                Timber.v("onFailedToRecycleView %s %s", mText, holder);
+                return super.onFailedToRecycleView(holder);
+            }
+
+            @Override
+            public void onViewRecycled(@NonNull UnionTypeViewHolder holder) {
+                Timber.v("onViewRecycled %s %s", mText, holder);
+                super.onViewRecycled(holder);
+            }
+
+            @Override
+            public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+                Timber.v("onAttachedToRecyclerView %s %s", mText, recyclerView);
+                super.onAttachedToRecyclerView(recyclerView);
+            }
+
+            @Override
+            public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+                Timber.v("onDetachedFromRecyclerView %s %s", mText, recyclerView);
+                super.onDetachedFromRecyclerView(recyclerView);
+            }
+
+            @Override
+            public void onViewAttachedToWindow(@NonNull UnionTypeViewHolder holder) {
+                Timber.v("onViewAttachedToWindow %s %s", mText, holder);
+                super.onViewAttachedToWindow(holder);
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(@NonNull UnionTypeViewHolder holder) {
+                Timber.v("onViewDetachedFromWindow %s %s", mText, holder);
+                super.onViewDetachedFromWindow(holder);
+            }
+        };
         mAdapter.setHost(Host.Factory.create(this, mRecyclerView, mAdapter));
         mAdapter.setUnionTypeMapper(new UnionType());
         mRecyclerView.setAdapter(mAdapter);
@@ -88,37 +125,37 @@ public class LifecycleFragment extends RealLifecycleFragment {
     @Override
     public void onStart() {
         super.onStart();
-        Timber.v("onStart");
+        Timber.v("onStart %s", mText);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Timber.v("onResume");
+        Timber.v("onResume %s", mText);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Timber.v("onPause");
+        Timber.v("onPause %s", mText);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Timber.v("onStop");
+        Timber.v("onStop %s", mText);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Timber.v("onDestroyView");
+        Timber.v("onDestroyView %s", mText);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Timber.v("onDestroy");
+        Timber.v("onDestroy %s", mText);
     }
 
 }
