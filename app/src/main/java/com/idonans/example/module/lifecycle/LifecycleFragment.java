@@ -5,14 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.RealLifecycleFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.common.collect.Lists;
 import com.idonans.example.R;
+import com.idonans.example.module.uniontype.impl.UnionType;
+import com.idonans.uniontype.Host;
+import com.idonans.uniontype.UnionTypeAdapter;
+import com.idonans.uniontype.UnionTypeItemObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import timber.log.Timber;
 
 public class LifecycleFragment extends RealLifecycleFragment {
@@ -49,13 +60,29 @@ public class LifecycleFragment extends RealLifecycleFragment {
         return inflater.inflate(R.layout.fragment_lifecycle, container, false);
     }
 
+    @BindView(R.id.recycler_view)
+    RecyclerView mRecyclerView;
+    UnionTypeAdapter mAdapter;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Timber.v("onViewCreated");
 
-        TextView textView = view.findViewById(R.id.text_1);
-        textView.setText(mText);
+        ButterKnife.bind(this, view);
+
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        mAdapter = new UnionTypeAdapter();
+        mAdapter.setHost(Host.Factory.create(this, mRecyclerView, mAdapter));
+        mAdapter.setUnionTypeMapper(new UnionType());
+        mRecyclerView.setAdapter(mAdapter);
+
+        List<UnionTypeItemObject> items = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            items.add(new UnionTypeItemObject<>(UnionType.UNION_TYPE_AUTO_TEXT, mText + "#" + i));
+        }
+        mAdapter.setGroupItems(1, Lists.newArrayList(items));
     }
 
     @Override
