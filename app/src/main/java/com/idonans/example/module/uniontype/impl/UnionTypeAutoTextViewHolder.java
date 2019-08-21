@@ -16,6 +16,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class UnionTypeAutoTextViewHolder extends UnionTypeViewHolder<Object> {
 
@@ -33,12 +34,24 @@ public class UnionTypeAutoTextViewHolder extends UnionTypeViewHolder<Object> {
                 host.getAdapter().notifyItemChanged(position);
             }
         });
+        Timber.v("init %s @%s", mLastText, hashCode());
     }
+
+    private String mLastText;
 
     @Override
     public void onBind(int position, Object itemObject) {
+        String oldLastText = mLastText;
         String time = new SimpleDateFormat("[yyyy-MM-dd HH:mm:ss:SSS]", Locale.getDefault()).format(new Date());
-        mText.setText(itemObject + " " + time);
+        mLastText = itemObject + " " + time;
+        mText.setText(mLastText);
+
+        Timber.v("onBind %s -> %s @%s", oldLastText, mLastText, hashCode());
+    }
+
+    @Override
+    public String toString() {
+        return mLastText + "@" + hashCode();
     }
 
 }
