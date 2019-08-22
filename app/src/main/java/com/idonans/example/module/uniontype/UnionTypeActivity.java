@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.idonans.dynamic.page.uniontype.UnionTypeStatusPageView;
+import com.idonans.dynamic.page.UnionTypeStatusPageView;
 import com.idonans.example.R;
 import com.idonans.example.module.uniontype.impl.UnionType;
 import com.idonans.uniontype.Host;

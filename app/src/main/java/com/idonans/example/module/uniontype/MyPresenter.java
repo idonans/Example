@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 
 import com.idonans.dynamic.page.PageView;
 import com.idonans.dynamic.page.StatusPagePresenter;
-import com.idonans.dynamic.page.uniontype.UnionTypeStatusPageView;
+import com.idonans.dynamic.page.UnionTypeStatusPageView;
 import com.idonans.example.api.DefaultApi;
 import com.idonans.example.entity.format.GithubUserInfo;
 import com.idonans.example.module.uniontype.impl.UnionType;
