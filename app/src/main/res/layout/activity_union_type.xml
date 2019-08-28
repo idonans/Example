@@ -27,14 +27,14 @@
             android:textColor="@color/c_black" />
     </com.idonans.systeminsets.SystemInsetsFrameLayout>
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+    <com.idonans.example.widget.pulllayout.PullLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@android:color/white">
 
-        <FrameLayout
+        <com.idonans.example.widget.pulllayout.SimplePullHeader
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFF0000"
@@ -50,31 +50,13 @@
                 android:padding="10dp"
                 android:text="loading"
                 android:textColor="@android:color/white" />
-        </FrameLayout>
+        </com.idonans.example.widget.pulllayout.SimplePullHeader>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFFF0000"
-            android:minHeight="100dp">
-
-            <TextView
-                android:id="@+id/more_loading"
-                style="@style/ExampleTheme.Text.Single.EllEnd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="loading more"
-                android:textColor="@android:color/white" />
-        </FrameLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </com.idonans.example.widget.pulllayout.PullLayout>
 
     <com.idonans.systeminsets.SystemInsetsFrameLayout
         android:id="@+id/bottom_bar"
