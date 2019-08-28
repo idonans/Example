@@ -24,7 +24,7 @@ public class MyPresenter extends StatusPagePresenter<UnionTypeItemObject, UnionT
     private int mNextPageNo;
 
     public MyPresenter(UnionTypeActivity.UnionTypePageView view) {
-        super(view, true, true);
+        super(view, false, true);
     }
 
     @Nullable
