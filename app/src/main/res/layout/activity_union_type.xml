@@ -28,7 +28,7 @@
     </com.idonans.systeminsets.SystemInsetsFrameLayout>
 
     <com.idonans.example.widget.pulllayout.PullLayout
-        android:id="@+id/refresh_layout"
+        android:id="@+id/pull_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

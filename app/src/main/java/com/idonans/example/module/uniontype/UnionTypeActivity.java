@@ -27,8 +27,8 @@ public class UnionTypeActivity extends AppCompatActivity {
         context.startActivity(starter);
     }
 
-    @BindView(R.id.refresh_layout)
-    PullLayout mRefreshLayout;
+    @BindView(R.id.pull_layout)
+    PullLayout mPullLayout;
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
@@ -49,37 +49,47 @@ public class UnionTypeActivity extends AppCompatActivity {
         adapter.setUnionTypeMapper(new UnionType());
         mRecyclerView.setAdapter(adapter);
 
-        mPageView = new UnionTypePageView(adapter) {
-            @Override
-            public void showInitLoading() {
-                super.showInitLoading();
-            }
-
-            @Override
-            public void hideInitLoading() {
-                super.hideInitLoading();
-                if (mRefreshLayout != null) {
-                    mRefreshLayout.setRefreshing(false, true);
-                }
-            }
-        };
+        mPageView = new UnionTypePageView(adapter);
         mPresenter = new MyPresenter(mPageView);
         mPageView.setPresenter(mPresenter);
         mPresenter.requestInit();
 
-        mRefreshLayout.setOnRefreshListener(pullLayout -> {
+        mPullLayout.setOnRefreshListener(pullLayout -> {
             if (mPresenter != null) {
                 mPresenter.requestInit(true);
-                return;
             }
-
-            pullLayout.setRefreshing(false, false);
         });
     }
 
     public class UnionTypePageView extends UnionTypeStatusPageView {
         public UnionTypePageView(@NonNull UnionTypeAdapter adapter) {
             super(adapter);
+        }
+
+        @Override
+        public void showInitLoading() {
+            if (!hasPageContent()) {
+                super.showInitLoading();
+                if (mPullLayout != null) {
+                    mPullLayout.setRefreshing(false, false);
+                    mPullLayout.setEnabled(false);
+                }
+            } else {
+                super.hideInitLoading();
+                if (mPullLayout != null) {
+                    mPullLayout.setRefreshing(true, false);
+                    mPullLayout.setEnabled(true);
+                }
+            }
+        }
+
+        @Override
+        public void hideInitLoading() {
+            super.hideInitLoading();
+            if (mPullLayout != null) {
+                mPullLayout.setRefreshing(false, false);
+                mPullLayout.setEnabled(true);
+            }
         }
     }
 
