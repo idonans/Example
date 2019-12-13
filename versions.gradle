@@ -10,7 +10,7 @@ bcfg.ver.versionCode = this.createGitVersionCode()
 bcfg.ver.versionName = this.createGitVersionName()
 
 bcfg.deps = [:]
-bcfg.deps.android_gradle_plugin = "com.android.tools.build:gradle:3.4.1"
+bcfg.deps.android_gradle_plugin = "com.android.tools.build:gradle:3.5.3"
 bcfg.deps.android_maven_gradle_plugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
 bcfg.deps.gradle_bintray_plugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
 bcfg.deps.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.10"
@@ -56,7 +56,7 @@ bcfg.deps.fresco_okhttp3 = "com.facebook.fresco:imagepipeline-okhttp3:2.0.0"
 
 bcfg.deps.idonans_appcontext = "com.idonans.appcontext:appcontext:0.1.4"
 bcfg.deps.idonans_lang = "com.idonans.lang:lang:0.1.7"
-bcfg.deps.idonans_systeminsets = "com.idonans.systeminsets:systeminsets:0.1.4"
+bcfg.deps.idonans_systeminsets = "com.idonans.systeminsets:systeminsets:0.1.6"
 bcfg.deps.idonans_backstack = "com.idonans.backstack:backstack:0.1.9"
 bcfg.deps.idonans_uniontype = "com.idonans.uniontype:uniontype:0.1.8"
 bcfg.deps.idonans_dynamic = "com.idonans.dynamic:dynamic:0.1.29"
