@@ -9,12 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
-import com.idonans.example.R;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.idonans.example.databinding.ActivityLifecycleBinding;
 
 public class LifecycleActivity extends AppCompatActivity {
 
@@ -25,19 +21,18 @@ public class LifecycleActivity extends AppCompatActivity {
         context.startActivity(starter);
     }
 
-    @BindView(R.id.pager)
-    ViewPager mPager;
+    private ActivityLifecycleBinding mBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lifecycle);
-        ButterKnife.bind(this);
+        mBinding = ActivityLifecycleBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
 
-        mPager.setAdapter(new DataAdapter(getSupportFragmentManager()));
+        mBinding.pager.setAdapter(new DataAdapter(getSupportFragmentManager()));
     }
 
-    private class DataAdapter extends FragmentStatePagerAdapter {
+    private static class DataAdapter extends FragmentStatePagerAdapter {
 
         public DataAdapter(FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

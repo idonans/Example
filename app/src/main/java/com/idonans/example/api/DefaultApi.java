@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DefaultApi {
 
-    private static Singleton<DefaultApi> sInstance = new Singleton<DefaultApi>() {
+    private static final Singleton<DefaultApi> sInstance = new Singleton<DefaultApi>() {
         @Override
         protected DefaultApi create() {
             return new DefaultApi();
@@ -24,7 +24,7 @@ public class DefaultApi {
         return sInstance.get();
     }
 
-    private DefaultApiInterface mDefaultApiInterface;
+    private final DefaultApiInterface mDefaultApiInterface;
 
     private DefaultApi() {
         Retrofit retrofit = new Retrofit.Builder()

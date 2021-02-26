@@ -4,19 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.idonans.backstack.dialog.ViewDialog;
+import com.idonans.example.databinding.ActivityMainBinding;
 import com.idonans.example.module.lifecycle.LifecycleActivity;
 import com.idonans.example.module.uniontype.UnionTypeActivity;
 import com.idonans.lang.util.ViewUtil;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import static com.idonans.example.databinding.ActivityMainBinding.inflate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,25 +24,18 @@ public class MainActivity extends AppCompatActivity {
         context.startActivity(starter);
     }
 
-    @BindView(R.id.item_union_type)
-    View mItemUnionType;
-    @BindView(R.id.item_view_dialog)
-    View mItemViewDialog;
-    @BindView(R.id.item_lifecycle)
-    View mItemLifecycle;
-    @BindView(R.id.item_more)
-    View mItemMore;
+    private ActivityMainBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        mBinding = inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
 
-        ViewUtil.onClick(mItemUnionType, v -> UnionTypeActivity.start(this));
-        ViewUtil.onClick(mItemViewDialog, v -> showSimpleDialog(0));
-        ViewUtil.onClick(mItemLifecycle, v -> LifecycleActivity.start(this));
-        ViewUtil.onClick(mItemMore, v -> {
+        ViewUtil.onClick(mBinding.itemUnionType, v -> UnionTypeActivity.start(this));
+        ViewUtil.onClick(mBinding.itemViewDialog, v -> showSimpleDialog(0));
+        ViewUtil.onClick(mBinding.itemLifecycle, v -> LifecycleActivity.start(this));
+        ViewUtil.onClick(mBinding.itemMore, v -> {
             // TODO
         });
     }

@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.bcfg.ver.target_sdk
@@ -26,6 +25,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -35,9 +38,7 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.gson
     implementation rootProject.ext.bcfg.deps.rxjava2
     implementation rootProject.ext.bcfg.deps.rx_android
-    implementation rootProject.ext.bcfg.deps.rxbinding2
-    implementation rootProject.ext.bcfg.deps.butterknife
-    annotationProcessor rootProject.ext.bcfg.deps.butterknife_processor
+    implementation rootProject.ext.bcfg.deps.rxbinding4
     implementation rootProject.ext.bcfg.deps.idonans_appcontext
     implementation rootProject.ext.bcfg.deps.idonans_lang
     implementation rootProject.ext.bcfg.deps.idonans_systeminsets
