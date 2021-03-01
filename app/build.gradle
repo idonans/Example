@@ -40,6 +40,7 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.rx_android
     implementation rootProject.ext.bcfg.deps.rxbinding4
     implementation rootProject.ext.bcfg.deps.idonans_appcontext
+    implementation rootProject.ext.bcfg.deps.idonans_core
     implementation rootProject.ext.bcfg.deps.idonans_lang
     implementation rootProject.ext.bcfg.deps.idonans_systeminsets
     implementation rootProject.ext.bcfg.deps.idonans_backstack
