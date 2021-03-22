@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.idonans.lang.WeakAbortSignal;
-import com.idonans.lang.thread.Threads;
+import com.idonans.core.WeakAbortSignal;
+import com.idonans.core.thread.Threads;
 
 public class SplashActivity extends AppCompatActivity {
 
