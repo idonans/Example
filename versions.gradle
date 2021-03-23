@@ -49,7 +49,7 @@ bcfg.deps.idonans_lang = "com.idonans.lang:lang:1.0.3"
 bcfg.deps.idonans_systeminsets = "com.idonans.systeminsets:systeminsets:1.0.1"
 bcfg.deps.idonans_backstack = "com.idonans.backstack:backstack:1.0.1"
 bcfg.deps.idonans_uniontype = "com.idonans.uniontype:uniontype:1.0.2"
-bcfg.deps.idonans_dynamic = "com.idonans.dynamic:dynamic:0.1.36"
+bcfg.deps.idonans_dynamic = "com.idonans.dynamic:dynamic:1.0.1"
 
 bcfg.addRepos = this.&addRepos
 
