@@ -109,7 +109,7 @@ public class ExampleLog {
         private final String mLogTag;
 
         private InternalLibLog(final String libName, String libVersionName, int libVersionCode) {
-            final String logTag = BuildConfig.LIB_NAME + "_" + BuildConfig.LIB_VERSION_NAME + "(" + BuildConfig.LIB_VERSION_CODE + ")";
+            final String logTag = libName + "_" + libVersionName + "(" + libVersionCode + ")";
             final int length = logTag.length();
             if (length > 23) {
                 mLogTag = logTag.substring(0, 23);
