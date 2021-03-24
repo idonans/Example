@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class UnionTypeAutoTextViewHolder extends UnionTypeViewHolder<Object> {
+public class UnionTypeAutoTextViewHolder extends UnionTypeViewHolder {
 
     private final UnionTypeAutoTextViewHolderBinding mBinding;
 
@@ -32,7 +32,7 @@ public class UnionTypeAutoTextViewHolder extends UnionTypeViewHolder<Object> {
     private String mLastText;
 
     @Override
-    public void onBind(int position, Object itemObject) {
+    public void onBind(int position, @NonNull Object itemObject) {
         String oldLastText = mLastText;
         String time = new SimpleDateFormat("[yyyy-MM-dd HH:mm:ss:SSS]", Locale.getDefault()).format(new Date());
         mLastText = itemObject + " " + time;

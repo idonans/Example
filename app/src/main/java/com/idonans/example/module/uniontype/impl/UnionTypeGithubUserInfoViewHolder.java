@@ -8,7 +8,7 @@ import com.idonans.example.entity.format.GithubUserInfo;
 import com.idonans.uniontype.Host;
 import com.idonans.uniontype.UnionTypeViewHolder;
 
-public class UnionTypeGithubUserInfoViewHolder extends UnionTypeViewHolder<GithubUserInfo> {
+public class UnionTypeGithubUserInfoViewHolder extends UnionTypeViewHolder {
 
     private final UnionTypeGithubUserInfoViewHolderBinding mBinding;
 
@@ -18,7 +18,11 @@ public class UnionTypeGithubUserInfoViewHolder extends UnionTypeViewHolder<Githu
     }
 
     @Override
-    public void onBind(int position, GithubUserInfo itemObject) {
+    public void onBind(int position, @NonNull Object itemObject) {
+        onBind(position, ((GithubUserInfo) itemObject));
+    }
+
+    private void onBind(int position, GithubUserInfo itemObject) {
         mBinding.avatar.setImageURI(itemObject.avatar);
         mBinding.username.setText(itemObject.username);
     }

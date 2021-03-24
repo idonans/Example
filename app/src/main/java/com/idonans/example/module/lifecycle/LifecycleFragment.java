@@ -107,7 +107,7 @@ public class LifecycleFragment extends Fragment {
 
         List<UnionTypeItemObject> items = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            items.add(new UnionTypeItemObject<>(UnionType.UNION_TYPE_AUTO_TEXT, mText + "#" + i));
+            items.add(new UnionTypeItemObject(UnionType.UNION_TYPE_AUTO_TEXT, mText + "#" + i));
         }
         mAdapter.setGroupItems(1, Lists.newArrayList(items));
     }

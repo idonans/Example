@@ -7,7 +7,7 @@ import com.idonans.example.databinding.UnionTypeTextViewHolderBinding;
 import com.idonans.uniontype.Host;
 import com.idonans.uniontype.UnionTypeViewHolder;
 
-public class UnionTypeTextViewHolder extends UnionTypeViewHolder<Object> {
+public class UnionTypeTextViewHolder extends UnionTypeViewHolder {
 
     private final UnionTypeTextViewHolderBinding mBinding;
 
@@ -17,7 +17,7 @@ public class UnionTypeTextViewHolder extends UnionTypeViewHolder<Object> {
     }
 
     @Override
-    public void onBind(int position, Object itemObject) {
+    public void onBind(int position, @NonNull Object itemObject) {
         mBinding.text.setText(String.valueOf(itemObject));
     }
 
