@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import timber.log.Timber;
+import com.idonans.example.ExampleLog;
 
 public class LifecycleObserverImpl implements LifecycleObserver {
 
@@ -19,32 +19,32 @@ public class LifecycleObserverImpl implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-        Timber.v("%s onCreate", mPrefix);
+        ExampleLog.v("%s onCreate", mPrefix);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onStart() {
-        Timber.v("%s onStart", mPrefix);
+        ExampleLog.v("%s onStart", mPrefix);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResume() {
-        Timber.v("%s onResume", mPrefix);
+        ExampleLog.v("%s onResume", mPrefix);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-        Timber.v("%s onPause", mPrefix);
+        ExampleLog.v("%s onPause", mPrefix);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onStop() {
-        Timber.v("%s onStop", mPrefix);
+        ExampleLog.v("%s onStop", mPrefix);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
-        Timber.v("%s onDestroy", mPrefix);
+        ExampleLog.v("%s onDestroy", mPrefix);
         mLifecycle.removeObserver(this);
     }
 

@@ -8,17 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.idonans.dynamic.page.UnionTypeStatusPageView;
-import com.idonans.example.R;
+import com.idonans.example.databinding.ActivityUnionTypeBinding;
 import com.idonans.example.module.uniontype.impl.UnionType;
-import com.idonans.example.widget.pulllayout.PullLayout;
 import com.idonans.uniontype.Host;
 import com.idonans.uniontype.UnionTypeAdapter;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class UnionTypeActivity extends AppCompatActivity {
 
@@ -27,34 +22,30 @@ public class UnionTypeActivity extends AppCompatActivity {
         context.startActivity(starter);
     }
 
-    @BindView(R.id.pull_layout)
-    PullLayout mPullLayout;
-    @BindView(R.id.recycler_view)
-    RecyclerView mRecyclerView;
-
+    private ActivityUnionTypeBinding mBinding;
     private UnionTypePageView mPageView;
     private MyPresenter mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_union_type);
-        ButterKnife.bind(this);
+        mBinding = ActivityUnionTypeBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
 
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mBinding.recyclerView.setHasFixedSize(true);
+        mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         UnionTypeAdapter adapter = new UnionTypeAdapter();
-        adapter.setHost(Host.Factory.create(this, mRecyclerView, adapter));
+        adapter.setHost(Host.Factory.create(this, mBinding.recyclerView, adapter));
         adapter.setUnionTypeMapper(new UnionType());
-        mRecyclerView.setAdapter(adapter);
+        mBinding.recyclerView.setAdapter(adapter);
 
         mPageView = new UnionTypePageView(adapter);
         mPresenter = new MyPresenter(mPageView);
         mPageView.setPresenter(mPresenter);
         mPresenter.requestInit();
 
-        mPullLayout.setOnRefreshListener(pullLayout -> {
+        mBinding.pullLayout.setOnRefreshListener(pullLayout -> {
             if (mPresenter != null) {
                 mPresenter.requestInit(true);
             }
@@ -70,15 +61,15 @@ public class UnionTypeActivity extends AppCompatActivity {
         public void showInitLoading() {
             if (!hasPageContent()) {
                 super.showInitLoading();
-                if (mPullLayout != null) {
-                    mPullLayout.setRefreshing(false, false);
-                    mPullLayout.setEnabled(false);
+                if (mBinding.pullLayout != null) {
+                    mBinding.pullLayout.setRefreshing(false, false);
+                    mBinding.pullLayout.setEnabled(false);
                 }
             } else {
                 super.hideInitLoading();
-                if (mPullLayout != null) {
-                    mPullLayout.setRefreshing(true, false);
-                    mPullLayout.setEnabled(true);
+                if (mBinding.pullLayout != null) {
+                    mBinding.pullLayout.setRefreshing(true, false);
+                    mBinding.pullLayout.setEnabled(true);
                 }
             }
         }
@@ -86,9 +77,9 @@ public class UnionTypeActivity extends AppCompatActivity {
         @Override
         public void hideInitLoading() {
             super.hideInitLoading();
-            if (mPullLayout != null) {
-                mPullLayout.setRefreshing(false, false);
-                mPullLayout.setEnabled(true);
+            if (mBinding.pullLayout != null) {
+                mBinding.pullLayout.setRefreshing(false, false);
+                mBinding.pullLayout.setEnabled(true);
             }
         }
     }

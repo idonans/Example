@@ -1,11 +1,11 @@
 package com.idonans.example;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
-import io.reactivex.plugins.RxJavaPlugins;
-import timber.log.Timber;
+import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 
 public class MainApplication extends Application {
 
@@ -13,11 +13,12 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        ExampleLog.setLogLevel(Log.VERBOSE);
+
         RxJavaPlugins.setErrorHandler(e -> {
             e.printStackTrace();
-            Timber.e(e, "RxJavaPlugins.setErrorHandler");
+            ExampleLog.e(e, "RxJavaPlugins.setErrorHandler");
         });
-        Timber.plant(new Timber.DebugTree());
 
         Fresco.initialize(this);
     }

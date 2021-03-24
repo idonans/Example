@@ -5,7 +5,7 @@ import androidx.annotation.IntRange;
 import com.idonans.example.entity.api.GithubPage;
 import com.idonans.example.entity.api.GithubUserInfo;
 
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;

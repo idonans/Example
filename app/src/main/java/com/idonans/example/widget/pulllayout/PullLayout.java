@@ -23,15 +23,14 @@ import androidx.core.view.NestedScrollingParent2;
 import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ViewCompat;
 
+import com.idonans.core.util.DimenUtil;
+import com.idonans.example.ExampleLog;
 import com.idonans.example.R;
-import com.idonans.lang.util.DimenUtil;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import javax.annotation.Nonnull;
-
-import timber.log.Timber;
 
 public class PullLayout extends FrameLayout implements NestedScrollingParent2, NestedScrollingChild2 {
 
@@ -106,7 +105,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
             ensureTargetAndHeader();
 
             if (mTarget == null || mHeader == null) {
-                Timber.e("target or header not found");
+                ExampleLog.e("target or header not found");
                 return;
             }
 
@@ -155,7 +154,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 
@@ -178,13 +177,13 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
 
             case MotionEvent.ACTION_MOVE:
                 if (mActivePointerId < 0) {
-                    Timber.e("onInterceptTouchEvent ACTION_MOVE but no active pointer id.");
+                    ExampleLog.e("onInterceptTouchEvent ACTION_MOVE but no active pointer id.");
                     return false;
                 }
 
                 pointerIndex = event.findPointerIndex(mActivePointerId);
                 if (pointerIndex < 0) {
-                    Timber.e("onInterceptTouchEvent ACTION_MOVE but active pointer id invalid.");
+                    ExampleLog.e("onInterceptTouchEvent ACTION_MOVE but active pointer id invalid.");
                     return false;
                 }
 
@@ -212,7 +211,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 
@@ -235,13 +234,13 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
 
             case MotionEvent.ACTION_MOVE: {
                 if (mActivePointerId < 0) {
-                    Timber.e("onTouchEvent ACTION_MOVE but no active pointer id.");
+                    ExampleLog.e("onTouchEvent ACTION_MOVE but no active pointer id.");
                     return false;
                 }
 
                 pointerIndex = event.findPointerIndex(mActivePointerId);
                 if (pointerIndex < 0) {
-                    Timber.e("onTouchEvent ACTION_MOVE but active pointer id invalid.");
+                    ExampleLog.e("onTouchEvent ACTION_MOVE but active pointer id invalid.");
                     return false;
                 }
 
@@ -480,7 +479,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 
@@ -553,7 +552,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return;
         }
 
@@ -660,7 +659,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 
@@ -671,7 +670,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 
@@ -682,7 +681,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 
@@ -693,7 +692,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 
@@ -707,7 +706,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return;
         }
 
@@ -768,7 +767,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return;
         }
 
@@ -789,7 +788,7 @@ public class PullLayout extends FrameLayout implements NestedScrollingParent2, N
         ensureTargetAndHeader();
 
         if (mTarget == null || mHeader == null) {
-            Timber.e("target or header not found");
+            ExampleLog.e("target or header not found");
             return false;
         }
 

@@ -10,6 +10,9 @@ android {
         targetSdkVersion rootProject.ext.bcfg.ver.target_sdk
         versionCode rootProject.ext.bcfg.ver.versionCode
         versionName rootProject.ext.bcfg.ver.versionName
+        buildConfigField("String", "LIB_NAME", "\"MSIMSDK_SAMPLE\"")
+        buildConfigField("int", "LIB_VERSION_CODE", "$versionCode")
+        buildConfigField("String", "LIB_VERSION_NAME", "\"$versionName\"")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,7 +37,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation rootProject.ext.bcfg.deps.androidx_constraintlayout
-    implementation rootProject.ext.bcfg.deps.timber
     implementation rootProject.ext.bcfg.deps.gson
     implementation rootProject.ext.bcfg.deps.rxjava
     implementation rootProject.ext.bcfg.deps.rxandroid
@@ -44,8 +46,8 @@ dependencies {
     implementation rootProject.ext.bcfg.deps.idonans_lang
     implementation rootProject.ext.bcfg.deps.idonans_systeminsets
     implementation rootProject.ext.bcfg.deps.idonans_backstack
-    implementation rootProject.ext.bcfg.deps.idonans_uniontype
     implementation rootProject.ext.bcfg.deps.idonans_dynamic
+    implementation rootProject.ext.bcfg.deps.idonans_uniontype
     implementation rootProject.ext.bcfg.deps.retrofit
     implementation rootProject.ext.bcfg.deps.retrofit_gson
     implementation rootProject.ext.bcfg.deps.retrofit_rxjava
