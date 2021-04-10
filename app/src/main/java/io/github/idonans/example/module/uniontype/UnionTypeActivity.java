@@ -9,11 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.idonans.dynamic.page.UnionTypeStatusPageView;
+import io.github.idonans.dynamic.page.UnionTypeStatusPageView;
 import io.github.idonans.example.databinding.ActivityUnionTypeBinding;
 import io.github.idonans.example.module.uniontype.impl.UnionType;
-import com.idonans.uniontype.Host;
-import com.idonans.uniontype.UnionTypeAdapter;
+import io.github.idonans.uniontype.Host;
+import io.github.idonans.uniontype.UnionTypeAdapter;
 
 public class UnionTypeActivity extends AppCompatActivity {
 

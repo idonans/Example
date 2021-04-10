@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.idonans.backstack.dialog.ViewDialog;
+import io.github.idonans.backstack.dialog.ViewDialog;
 import io.github.idonans.example.databinding.ActivityMainBinding;
 import io.github.idonans.example.module.lifecycle.LifecycleActivity;
 import io.github.idonans.example.module.uniontype.UnionTypeActivity;
-import com.idonans.lang.util.ViewUtil;
+import io.github.idonans.lang.util.ViewUtil;
 
 import static io.github.idonans.example.databinding.ActivityMainBinding.inflate;
 

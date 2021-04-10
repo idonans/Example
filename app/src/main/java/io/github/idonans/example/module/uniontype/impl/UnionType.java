@@ -1,6 +1,6 @@
 package io.github.idonans.example.module.uniontype.impl;
 
-import com.idonans.dynamic.uniontype.loadingstatus.UnionTypeLoadingStatus;
+import io.github.idonans.dynamic.uniontype.loadingstatus.UnionTypeLoadingStatus;
 
 public class UnionType extends UnionTypeLoadingStatus {
 

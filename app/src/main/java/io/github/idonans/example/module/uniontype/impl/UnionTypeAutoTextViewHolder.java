@@ -2,16 +2,16 @@ package io.github.idonans.example.module.uniontype.impl;
 
 import androidx.annotation.NonNull;
 
-import io.github.idonans.example.ExampleLog;
-import io.github.idonans.example.R;
-import io.github.idonans.example.databinding.UnionTypeAutoTextViewHolderBinding;
-import com.idonans.lang.util.ViewUtil;
-import com.idonans.uniontype.Host;
-import com.idonans.uniontype.UnionTypeViewHolder;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import io.github.idonans.example.ExampleLog;
+import io.github.idonans.example.R;
+import io.github.idonans.example.databinding.UnionTypeAutoTextViewHolderBinding;
+import io.github.idonans.lang.util.ViewUtil;
+import io.github.idonans.uniontype.Host;
+import io.github.idonans.uniontype.UnionTypeViewHolder;
 
 public class UnionTypeAutoTextViewHolder extends UnionTypeViewHolder {
 

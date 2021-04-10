@@ -2,10 +2,9 @@ package io.github.idonans.example.api;
 
 import androidx.annotation.IntRange;
 
-import com.idonans.core.Singleton;
+import io.github.idonans.core.Singleton;
 import io.github.idonans.example.entity.format.GithubPage;
 import io.github.idonans.example.entity.format.GithubUserInfo;
-
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;

@@ -5,8 +5,8 @@ import androidx.annotation.NonNull;
 import io.github.idonans.example.R;
 import io.github.idonans.example.databinding.UnionTypeGithubUserInfoViewHolderBinding;
 import io.github.idonans.example.entity.format.GithubUserInfo;
-import com.idonans.uniontype.Host;
-import com.idonans.uniontype.UnionTypeViewHolder;
+import io.github.idonans.uniontype.Host;
+import io.github.idonans.uniontype.UnionTypeViewHolder;
 
 public class UnionTypeGithubUserInfoViewHolder extends UnionTypeViewHolder {
 

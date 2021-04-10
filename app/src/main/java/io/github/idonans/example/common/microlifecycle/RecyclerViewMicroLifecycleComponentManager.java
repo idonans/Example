@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.idonans.core.thread.Threads;
+import io.github.idonans.core.thread.Threads;
 import io.github.idonans.example.ExampleLog;
 
 public abstract class RecyclerViewMicroLifecycleComponentManager extends MicroLifecycleComponentManager {

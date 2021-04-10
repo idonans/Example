@@ -12,16 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.common.collect.Lists;
-import io.github.idonans.example.ExampleLog;
-import io.github.idonans.example.databinding.FragmentLifecycleBinding;
-import io.github.idonans.example.module.uniontype.impl.UnionType;
-import com.idonans.uniontype.Host;
-import com.idonans.uniontype.UnionTypeAdapter;
-import com.idonans.uniontype.UnionTypeItemObject;
-import com.idonans.uniontype.UnionTypeViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.github.idonans.example.ExampleLog;
+import io.github.idonans.example.databinding.FragmentLifecycleBinding;
+import io.github.idonans.example.module.uniontype.impl.UnionType;
+import io.github.idonans.uniontype.Host;
+import io.github.idonans.uniontype.UnionTypeAdapter;
+import io.github.idonans.uniontype.UnionTypeItemObject;
+import io.github.idonans.uniontype.UnionTypeViewHolder;
 
 public class LifecycleFragment extends Fragment {
 

@@ -3,18 +3,17 @@ package io.github.idonans.example.module.uniontype;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.idonans.dynamic.page.PagePresenter;
-import com.idonans.dynamic.page.PageView;
-import com.idonans.dynamic.page.UnionTypeStatusPageView;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import io.github.idonans.dynamic.page.PagePresenter;
+import io.github.idonans.dynamic.page.PageView;
+import io.github.idonans.dynamic.page.UnionTypeStatusPageView;
 import io.github.idonans.example.ExampleLog;
 import io.github.idonans.example.api.DefaultApi;
 import io.github.idonans.example.entity.format.GithubUserInfo;
 import io.github.idonans.example.module.uniontype.impl.UnionType;
-import com.idonans.uniontype.UnionTypeItemObject;
-
-import java.util.ArrayList;
-import java.util.Collection;
-
+import io.github.idonans.uniontype.UnionTypeItemObject;
 import io.reactivex.rxjava3.core.SingleSource;
 
 public class MyPresenter extends PagePresenter<UnionTypeItemObject, UnionTypeStatusPageView> {

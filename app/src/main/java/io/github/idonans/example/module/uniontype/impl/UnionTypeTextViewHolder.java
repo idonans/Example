@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 import io.github.idonans.example.R;
 import io.github.idonans.example.databinding.UnionTypeTextViewHolderBinding;
-import com.idonans.uniontype.Host;
-import com.idonans.uniontype.UnionTypeViewHolder;
+import io.github.idonans.uniontype.Host;
+import io.github.idonans.uniontype.UnionTypeViewHolder;
 
 public class UnionTypeTextViewHolder extends UnionTypeViewHolder {
 
