@@ -9,11 +9,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import io.github.idonans.dynamic.DynamicResult;
 import io.github.idonans.dynamic.page.UnionTypeStatusPageView;
 import io.github.idonans.example.databinding.ActivityUnionTypeBinding;
 import io.github.idonans.example.module.uniontype.impl.UnionType;
 import io.github.idonans.uniontype.Host;
 import io.github.idonans.uniontype.UnionTypeAdapter;
+import io.github.idonans.uniontype.UnionTypeItemObject;
 
 public class UnionTypeActivity extends AppCompatActivity {
 
@@ -52,35 +54,26 @@ public class UnionTypeActivity extends AppCompatActivity {
         });
     }
 
-    public class UnionTypePageView extends UnionTypeStatusPageView {
+    public class UnionTypePageView extends UnionTypeStatusPageView<Object> {
+
         public UnionTypePageView(@NonNull UnionTypeAdapter adapter) {
             super(adapter);
         }
 
         @Override
-        public void showInitLoading() {
-            if (!hasPageContent()) {
-                super.showInitLoading();
-                if (mBinding.pullLayout != null) {
-                    mBinding.pullLayout.setRefreshing(false, false);
-                    mBinding.pullLayout.setEnabled(false);
-                }
-            } else {
-                super.hideInitLoading();
-                if (mBinding.pullLayout != null) {
-                    mBinding.pullLayout.setRefreshing(true, false);
-                    mBinding.pullLayout.setEnabled(true);
-                }
-            }
+        public void onInitRequestResult(@NonNull DynamicResult<UnionTypeItemObject, Object> result) {
+            super.onInitRequestResult(result);
+
+            mBinding.pullLayout.setRefreshing(false, false);
+            mBinding.pullLayout.setEnabled(true);
         }
 
         @Override
-        public void hideInitLoading() {
-            super.hideInitLoading();
-            if (mBinding.pullLayout != null) {
-                mBinding.pullLayout.setRefreshing(false, false);
-                mBinding.pullLayout.setEnabled(true);
-            }
+        public void onPrePageRequestResult(@NonNull DynamicResult<UnionTypeItemObject, Object> result) {
+            super.onPrePageRequestResult(result);
+
+            mBinding.pullLayout.setRefreshing(false, false);
+            mBinding.pullLayout.setEnabled(true);
         }
     }
 

@@ -6,9 +6,11 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import io.github.idonans.dynamic.DynamicResult;
 import io.github.idonans.dynamic.page.PagePresenter;
 import io.github.idonans.dynamic.page.PageView;
 import io.github.idonans.dynamic.page.UnionTypeStatusPageView;
+import io.github.idonans.dynamic.single.SingleView;
 import io.github.idonans.example.ExampleLog;
 import io.github.idonans.example.api.DefaultApi;
 import io.github.idonans.example.entity.format.GithubUserInfo;
@@ -16,19 +18,19 @@ import io.github.idonans.example.module.uniontype.impl.UnionType;
 import io.github.idonans.uniontype.UnionTypeItemObject;
 import io.reactivex.rxjava3.core.SingleSource;
 
-public class MyPresenter extends PagePresenter<UnionTypeItemObject, UnionTypeStatusPageView> {
+public class MyPresenter extends PagePresenter<UnionTypeItemObject, Object, UnionTypeStatusPageView<Object>> {
 
     private final String mSearch = "idona";
     private int mPrePageNo;
     private int mNextPageNo;
 
     public MyPresenter(UnionTypeActivity.UnionTypePageView view) {
-        super(view, true, true);
+        super(view);
     }
 
     @Nullable
     @Override
-    protected SingleSource<Collection<UnionTypeItemObject>> createInitRequest() throws Exception {
+    protected SingleSource<DynamicResult<UnionTypeItemObject, Object>> createInitRequest() throws Exception {
         ExampleLog.v("createInitRequest [%s, %s]", mPrePageNo, mNextPageNo);
 
         return DefaultApi.getInstance().searchUserInfo(mSearch, 1)
@@ -44,27 +46,30 @@ public class MyPresenter extends PagePresenter<UnionTypeItemObject, UnionTypeSta
                     }
                     return items;
                 })
+                .map(input -> new DynamicResult<UnionTypeItemObject, Object>().setItems(input))
                 .firstOrError();
     }
 
     @Override
-    protected void onInitRequestResult(@NonNull PageView<UnionTypeItemObject> view, @NonNull Collection<UnionTypeItemObject> items) {
+    protected void onInitRequestResult(@NonNull SingleView<UnionTypeItemObject, Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
         ExampleLog.v("onInitRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
 
-        mPrePageNo = 1;
-        mNextPageNo = 1;
-        super.onInitRequestResult(view, items);
-    }
+        if (result.items != null && !result.items.isEmpty()) {
+            setPrePageRequestEnable(true);
+            setNextPageRequestEnable(true);
+            mPrePageNo = 1;
+            mNextPageNo = 1;
+        } else {
+            setPrePageRequestEnable(false);
+            setNextPageRequestEnable(false);
+        }
 
-    @Override
-    protected void onInitRequestError(@NonNull PageView<UnionTypeItemObject> view, @NonNull Throwable e) {
-        super.onInitRequestError(view, e);
-        e.printStackTrace();
+        super.onInitRequestResult(view, result);
     }
 
     @Nullable
     @Override
-    protected SingleSource<Collection<UnionTypeItemObject>> createPrePageRequest() throws Exception {
+    protected SingleSource<DynamicResult<UnionTypeItemObject, Object>> createPrePageRequest() throws Exception {
         ExampleLog.v("createPrePageRequest [%s, %s]", mPrePageNo, mNextPageNo);
 
         return DefaultApi.getInstance().searchUserInfo(mSearch, mPrePageNo - 1)
@@ -80,26 +85,24 @@ public class MyPresenter extends PagePresenter<UnionTypeItemObject, UnionTypeSta
                     }
                     return items;
                 })
+                .map(input -> new DynamicResult<UnionTypeItemObject, Object>().setItems(input))
                 .firstOrError();
     }
 
     @Override
-    protected void onPrePageRequestResult(@NonNull PageView<UnionTypeItemObject> view, @NonNull Collection<UnionTypeItemObject> items) {
+    protected void onPrePageRequestResult(@NonNull PageView<UnionTypeItemObject, Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
         ExampleLog.v("onPrePageRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
 
-        mPrePageNo--;
-        super.onPrePageRequestResult(view, items);
-    }
+        if (result.items != null && !result.items.isEmpty()) {
+            mPrePageNo--;
+        }
 
-    @Override
-    protected void onPrePageRequestError(@NonNull PageView<UnionTypeItemObject> view, @NonNull Throwable e) {
-        super.onPrePageRequestError(view, e);
-        e.printStackTrace();
+        super.onPrePageRequestResult(view, result);
     }
 
     @Nullable
     @Override
-    protected SingleSource<Collection<UnionTypeItemObject>> createNextPageRequest() throws Exception {
+    protected SingleSource<DynamicResult<UnionTypeItemObject, Object>> createNextPageRequest() throws Exception {
         ExampleLog.v("createNextPageRequest [%s, %s]", mPrePageNo, mNextPageNo);
 
         return DefaultApi.getInstance().searchUserInfo(mSearch, mNextPageNo + 1)
@@ -115,21 +118,19 @@ public class MyPresenter extends PagePresenter<UnionTypeItemObject, UnionTypeSta
                     }
                     return items;
                 })
+                .map(input -> new DynamicResult<UnionTypeItemObject, Object>().setItems(input))
                 .firstOrError();
     }
 
     @Override
-    protected void onNextPageRequestResult(@NonNull PageView<UnionTypeItemObject> view, @NonNull Collection<UnionTypeItemObject> items) {
+    protected void onNextPageRequestResult(@NonNull PageView<UnionTypeItemObject, Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
         ExampleLog.v("onNextPageRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
 
-        mNextPageNo++;
-        super.onNextPageRequestResult(view, items);
-    }
+        if (result.items != null) {
+            mNextPageNo++;
+        }
 
-    @Override
-    protected void onNextPageRequestError(@NonNull PageView<UnionTypeItemObject> view, @NonNull Throwable e) {
-        super.onNextPageRequestError(view, e);
-        e.printStackTrace();
+        super.onNextPageRequestResult(view, result);
     }
 
 }
