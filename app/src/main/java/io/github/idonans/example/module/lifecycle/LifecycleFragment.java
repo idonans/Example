@@ -110,7 +110,11 @@ public class LifecycleFragment extends Fragment {
         for (int i = 0; i < 10; i++) {
             items.add(new UnionTypeItemObject(UnionType.UNION_TYPE_AUTO_TEXT, mText + "#" + i));
         }
-        mAdapter.setGroupItems(1, Lists.newArrayList(items));
+        mAdapter.getData().beginTransaction()
+                .add((transaction, groupArrayList) -> {
+                    groupArrayList.setGroupItems(1, Lists.newArrayList(items));
+                })
+                .commit();
     }
 
     @Override
