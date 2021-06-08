@@ -8,9 +8,7 @@ import java.util.Collection;
 
 import io.github.idonans.dynamic.DynamicResult;
 import io.github.idonans.dynamic.page.PagePresenter;
-import io.github.idonans.dynamic.page.PageView;
 import io.github.idonans.dynamic.page.UnionTypeStatusPageView;
-import io.github.idonans.dynamic.single.SingleView;
 import io.github.idonans.example.ExampleLog;
 import io.github.idonans.example.api.DefaultApi;
 import io.github.idonans.example.entity.format.GithubUserInfo;
@@ -51,7 +49,7 @@ public class MyPresenter extends PagePresenter<UnionTypeItemObject, Object, Unio
     }
 
     @Override
-    protected void onInitRequestResult(@NonNull SingleView<UnionTypeItemObject, Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
+    protected void onInitRequestResult(@NonNull UnionTypeStatusPageView<Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
         ExampleLog.v("onInitRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
 
         if (result.items != null && !result.items.isEmpty()) {
@@ -90,7 +88,7 @@ public class MyPresenter extends PagePresenter<UnionTypeItemObject, Object, Unio
     }
 
     @Override
-    protected void onPrePageRequestResult(@NonNull PageView<UnionTypeItemObject, Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
+    protected void onPrePageRequestResult(@NonNull UnionTypeStatusPageView<Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
         ExampleLog.v("onPrePageRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
 
         if (result.items != null && !result.items.isEmpty()) {
@@ -123,7 +121,7 @@ public class MyPresenter extends PagePresenter<UnionTypeItemObject, Object, Unio
     }
 
     @Override
-    protected void onNextPageRequestResult(@NonNull PageView<UnionTypeItemObject, Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
+    protected void onNextPageRequestResult(@NonNull UnionTypeStatusPageView<Object> view, @NonNull DynamicResult<UnionTypeItemObject, Object> result) {
         ExampleLog.v("onNextPageRequestResult [%s, %s]", mPrePageNo, mNextPageNo);
 
         if (result.items != null) {
