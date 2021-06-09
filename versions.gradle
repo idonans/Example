@@ -54,6 +54,9 @@ bcfg.deps.idonans_dynamic = "io.github.idonans.dynamic:dynamic:3.0.5"
 bcfg.addRepos = this.&addRepos
 
 def addRepos(RepositoryHandler handler) {
+    handler.mavenCentral()
+    handler.jcenter()
+    handler.google()
     handler.maven { url 'https://maven.aliyun.com/repository/central' }
     handler.maven { url 'https://maven.aliyun.com/repository/public' }
     handler.maven { url 'https://maven.aliyun.com/repository/google' }
@@ -62,9 +65,6 @@ def addRepos(RepositoryHandler handler) {
     handler.maven { url 'https://dl.bintray.com/thelasterstar/maven/' }
     handler.maven { url 'https://dl.bintray.com/scwang90/maven' }
     handler.maven { url 'https://jitpack.io' }
-    handler.mavenCentral()
-    handler.jcenter()
-    handler.google()
 }
 
 def createGitVersionCode() {
