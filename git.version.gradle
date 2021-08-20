@@ -73,14 +73,19 @@ def createGitVersionName() {
     // TagName                   prefix                     suffix
     // 0.1                       0.1                        .offsetCommitCount           (1)
     // parent-0.1                0.1                        .offsetCommitCount           (2)
+    // parent(dev)-0.1           0.1                        .offsetCommitCount           (2.1)
     // parent-0.1-alpha          0.1-alpha                  offsetCommitCount            (3)
+    // parent(dev2)-0.1-alpha    0.1-alpha                  offsetCommitCount            (3.1)
     // parent-0.1-beta           0.1-beta                   offsetCommitCount            (4)
+    // parent(d3)-0.1-beta       0.1-beta                   offsetCommitCount            (4.1)
     // parent-0.1-release        0.1                        .offsetCommitCount           (5)
+    // parent(xxx)-0.1-release   0.1                        .offsetCommitCount           (5.1)
     // parent-0.1-SNAPSHOT       0.1-SNAPSHOT                                            (6)
+    // parent(xx)-0.1-SNAPSHOT   0.1-SNAPSHOT                                            (6.1)
     // other                     other                      .offsetCommitCount           (7)
 
-    // 匹配 (1) (2) (5)
-    def parentReleasePattern = /^(?:parent-)?((?:\d+\.)*\d+)(?:-release)?$/
+    // 匹配 (1) (2) (2.1) (5) (5.1)
+    def parentReleasePattern = /^(?:parent(?:\([^\(\)]+\))?-)?((?:\d+\.)*\d+)(?:-release)?$/
     def parentReleasePatternMatcher = latestTagName =~ parentReleasePattern
     if (parentReleasePatternMatcher) {
         versionNamePrefix = parentReleasePatternMatcher[0][1]
@@ -91,8 +96,8 @@ def createGitVersionName() {
         return versionName
     }
 
-    // 匹配 (3) (4)
-    def parentAlphaBetaPattern = /^(?:parent-)?((?:\d+\.)*\d+(?:-alpha)?(?:-beta)?)$/
+    // 匹配 (3) (3.1) (4) (4.1)
+    def parentAlphaBetaPattern = /^(?:parent(?:\([^\(\)]+\))?-)?((?:\d+\.)*\d+(?:-alpha)?(?:-beta)?)$/
     def parentAlphaBetaPatternMatcher = latestTagName =~ parentAlphaBetaPattern
     if (parentAlphaBetaPatternMatcher) {
         versionNamePrefix = parentAlphaBetaPatternMatcher[0][1]
@@ -103,8 +108,8 @@ def createGitVersionName() {
         return versionName
     }
 
-    // 匹配 (6)
-    def parentSnapshotPattern = /^(?:parent-)?((?:\d+\.)*\d+(?:-SNAPSHOT)?)$/
+    // 匹配 (6) (6.1)
+    def parentSnapshotPattern = /^(?:parent(?:\([^\(\)]+\))?-)?((?:\d+\.)*\d+(?:-SNAPSHOT)?)$/
     def parentSnapshotPatternMatcher = latestTagName =~ parentSnapshotPattern
     if (parentSnapshotPatternMatcher) {
         versionNamePrefix = parentSnapshotPatternMatcher[0][1]
