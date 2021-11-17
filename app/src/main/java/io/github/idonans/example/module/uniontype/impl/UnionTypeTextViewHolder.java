@@ -17,7 +17,7 @@ public class UnionTypeTextViewHolder extends UnionTypeViewHolder {
     }
 
     @Override
-    public void onBind(int position, @NonNull Object itemObject) {
+    public void onBindUpdate() {
         mBinding.text.setText(String.valueOf(itemObject));
     }
 

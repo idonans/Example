@@ -7,6 +7,8 @@
 //
 // versionCode = [ext.]createGitVersionCode()
 // versionName = [ext.]createGitVersionName()
+//
+// @see https://raw.githubusercontent.com/idonans/Example/master/git.version.gradle
 //////////////////////////////////////////////////////////////
 
 def createGitVersionCode() {

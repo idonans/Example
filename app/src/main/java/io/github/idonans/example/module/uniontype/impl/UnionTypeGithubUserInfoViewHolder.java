@@ -2,6 +2,7 @@ package io.github.idonans.example.module.uniontype.impl;
 
 import androidx.annotation.NonNull;
 
+import io.github.idonans.core.util.Preconditions;
 import io.github.idonans.example.R;
 import io.github.idonans.example.databinding.UnionTypeGithubUserInfoViewHolderBinding;
 import io.github.idonans.example.entity.format.GithubUserInfo;
@@ -18,11 +19,9 @@ public class UnionTypeGithubUserInfoViewHolder extends UnionTypeViewHolder {
     }
 
     @Override
-    public void onBind(int position, @NonNull Object itemObject) {
-        onBind(position, ((GithubUserInfo) itemObject));
-    }
-
-    private void onBind(int position, GithubUserInfo itemObject) {
+    public void onBindUpdate() {
+        final GithubUserInfo itemObject = (GithubUserInfo) this.itemObject;
+        Preconditions.checkNotNull(itemObject);
         mBinding.avatar.setImageURI(itemObject.avatar);
         mBinding.username.setText(itemObject.username);
     }

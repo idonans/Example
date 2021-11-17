@@ -32,7 +32,7 @@ public class UnionTypeAutoTextViewHolder extends UnionTypeViewHolder {
     private String mLastText;
 
     @Override
-    public void onBind(int position, @NonNull Object itemObject) {
+    public void onBindUpdate() {
         String oldLastText = mLastText;
         String time = new SimpleDateFormat("[yyyy-MM-dd HH:mm:ss:SSS]", Locale.getDefault()).format(new Date());
         mLastText = itemObject + " " + time;
